@@ -79,10 +79,6 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-<<<<<<< Updated upstream:Assets/character/Ch31_body.mat
     - _Color: {r: 0.8, g: 0.8, b: 0.8, a: 1}
-=======
-    - _Color: {r: 0.31764707, g: 0.31764707, b: 0.31764707, a: 1}
->>>>>>> Stashed changes:Assets/Test.mat
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
