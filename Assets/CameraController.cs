@@ -13,7 +13,7 @@ public class cameraController : MonoBehaviour
     private Vector3 Target;
 
     // Nilai zoom tetap
-    private const float ZoomPosition = -49.5f;
+    private const float ZoomPosition = -52.5f;
 
     void Start()
     {
