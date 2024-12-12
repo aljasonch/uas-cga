@@ -1,4 +1,4 @@
-"UMN's Journey" is a fun and challenging 2.5D game developed with Unity 3D. You'll play as Gobi, an enthusiastic and determined university student on his way to campus. However, Gobi's journey is far from easy! Various obstacles, puzzles, and unique characters stand in his way.
+"Journey To UMN" is a fun and challenging 2.5D game developed with Unity 3D. You'll play as Gobi, an enthusiastic and determined university student on his way to campus. However, Gobi's journey is far from easy! Various obstacles, puzzles, and unique characters stand in his way.
 
 Gameplay:
 
