@@ -5,10 +5,10 @@ public class CanvasController : MonoBehaviour
 {
 public void RestartGame()
 {
-    Time.timeScale = 1f; // Resume waktu
-    Debug.Log("Time resumed: " + Time.timeScale); // Debug log untuk pengecekan
+    Time.timeScale = 1f; 
+    Debug.Log("Time resumed: " + Time.timeScale); 
 
-    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // Reload scene
+    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); 
 }
 
 }
