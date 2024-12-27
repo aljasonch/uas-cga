@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 public class characterMovement : MonoBehaviour
 {
     CharacterController ChrController;
@@ -10,18 +11,27 @@ public class characterMovement : MonoBehaviour
     public float verticalSpeed = 3.0f; // New variable for vertical speed
     Vector3 moveDirection = Vector3.zero;
     public Animator anim;
+
     void Start()
     {
         ChrController = GetComponent<CharacterController>();
     }
+
     void Update()
     {
+        // Declare inputDirection outside of the if block
+        Vector3 inputDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+
         if (ChrController.isGrounded)
         {
             anim.SetBool("isJumping", false);
-            // Horizontal and Vertical movement
-            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")); // Add vertical input for Z-axis
+
+            // Horizontal and Vertical movement in local space
+            moveDirection = transform.TransformDirection(inputDirection); // Convert to world space
+
+            // Apply speed
             moveDirection *= speed;
+
             // Jumping (Y-axis movement)
             if (Input.GetButton("Jump"))
             {
@@ -31,26 +41,52 @@ public class characterMovement : MonoBehaviour
         }
         else
         {
-            moveDirection.x = Input.GetAxis("Horizontal") * speed;
+            // While airborne, maintain horizontal input but still in world space
+            moveDirection.x = transform.TransformDirection(inputDirection).x * speed;
         }
-        // Animation and running state
-        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+
+        // Apply gravity
+        moveDirection.y -= gravity * Time.deltaTime;
+
+        // Move the character controller
+        ChrController.Move(moveDirection * Time.deltaTime);
+
+        // Handle rotation for facing movement direction
+        if (inputDirection.x != 0 || inputDirection.z != 0)
         {
             anim.SetBool("isRunning", true);
-            Vector3 moveDirectionXZ = new Vector3(-moveDirection.z, 0, moveDirection.x); // Membuat vektor baru tanpa komponen Y
-            Quaternion targetRotation = Quaternion.LookRotation(-moveDirectionXZ); // Membalik arah rotasi
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
 
+            // Face the movement direction
+            Vector3 lookDirection = new Vector3(inputDirection.x, 0, inputDirection.z);
+            if (lookDirection != Vector3.zero)
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
+            }
+
+            // Set animation based on movement direction
+            if (inputDirection.x < 0) // Moving Left
+            {
+                anim.SetBool("isWalkingLeft", true);
+                anim.SetBool("isWalkingRight", false);
+            }
+            else if (inputDirection.x > 0) // Moving Right
+            {
+                anim.SetBool("isWalkingLeft", false);
+                anim.SetBool("isWalkingRight", true);
+            }
+            else // Not moving horizontally
+            {
+                anim.SetBool("isWalkingLeft", false);
+                anim.SetBool("isWalkingRight", false);
+            }
         }
         else
         {
             anim.SetBool("isRunning", false);
+            // Reset animation if no movement
+            anim.SetBool("isWalkingLeft", false);
+            anim.SetBool("isWalkingRight", false);
         }
-        // Apply gravity and vertical movement
-        moveDirection.y -= gravity * Time.deltaTime;
-        // For vertical control, you could also allow movement along the y-axis if needed
-        moveDirection.y += Input.GetAxis("Vertical") * verticalSpeed * Time.deltaTime; // Adjust vertical movement based on player input
-        // Move the character controller
-        ChrController.Move(moveDirection * Time.deltaTime);
     }
 }
