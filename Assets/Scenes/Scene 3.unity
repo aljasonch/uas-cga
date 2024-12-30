@@ -4169,15 +4169,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 5d11ffd3eb531a345851c7ab4fabeda4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.059000015
+      value: 3.61
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5d11ffd3eb531a345851c7ab4fabeda4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.9899998
+      value: -0.59
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5d11ffd3eb531a345851c7ab4fabeda4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.0850029
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5d11ffd3eb531a345851c7ab4fabeda4, type: 3}
       propertyPath: m_LocalRotation.w
@@ -20517,7 +20517,7 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: -0.051190607, y: -0.13536036, z: 0.003436455, w: -0.9894672}
-  m_LocalPosition: {x: 12.99, y: -19.34, z: -58.26}
+  m_LocalPosition: {x: 15.29, y: -21.04, z: -53.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -20536,8 +20536,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FollowSpeed: 5
-  xOffset: -0.64
-  yOffset: 0.8
 --- !u!1001 &964421240
 PrefabInstance:
   m_ObjectHideFlags: 0
