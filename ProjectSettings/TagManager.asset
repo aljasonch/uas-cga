@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Money
   - Book
+  - Key
   layers:
   - Default
   - TransparentFX

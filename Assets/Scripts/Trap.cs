@@ -2,35 +2,29 @@ using UnityEngine;
 
 public class Trap : MonoBehaviour
 {
-    public GameObject gameOverCanvas; // Referensi ke Canvas Game Over
+    public GameObject gameOverCanvas; 
 
-    // Saat karakter memasuki area lava
     private void OnTriggerEnter(Collider other)
     {
-        // Periksa apakah objek yang terkena lava adalah player
         if (other.CompareTag("Player"))
         {
-            // Jika terkena lava, tampilkan Game Over
             ShowGameOver();
         }
     }
 
-    // Fungsi untuk menampilkan Canvas Game Over
     private void ShowGameOver()
     {
         if (gameOverCanvas != null)
         {
-            gameOverCanvas.SetActive(true); // Aktifkan Canvas Game Over
+            gameOverCanvas.SetActive(true);
         }
 
-        // Opsional: Hentikan waktu
-        Time.timeScale = 0f; // Pause permainan
+        Time.timeScale = 0f; 
     }
 
-    // Opsional: Fungsi untuk mereset permainan
     public void RestartGame()
     {
-        Time.timeScale = 1f; // Resume waktu
-        UnityEngine.SceneManagement.SceneManager.LoadScene(0); // Ganti dengan nama/ID scene Anda
+        Time.timeScale = 1f; 
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0); 
     }
 }

@@ -8,6 +8,7 @@ public class IntroductionText : MonoBehaviour
     public float displayTime = 5f;
     public string[] sentences;
     public float typingSpeed = 0.05f;
+    
 
     private void Start()
     {
