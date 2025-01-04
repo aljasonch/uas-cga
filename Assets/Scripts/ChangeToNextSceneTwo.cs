@@ -23,12 +23,10 @@ public class ChangeToNextSceneTwo : MonoBehaviour
             keyObject = GameObject.FindGameObjectWithTag("Key");
         }
     }
-
     public void SetHasKey(bool value)
     {
         hasKey = value;
     }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -42,7 +40,6 @@ public class ChangeToNextSceneTwo : MonoBehaviour
             keyObject.SetActive(false);
         }
     }
-
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -51,7 +48,6 @@ public class ChangeToNextSceneTwo : MonoBehaviour
             HideInteractionPrompt();
         }
     }
-
     private void Update()
     {
         if (canChangeScene && !isInteracting)
@@ -70,7 +66,6 @@ public class ChangeToNextSceneTwo : MonoBehaviour
             }
         }
     }
-
     private IEnumerator ChangeSceneRoutine()
     {
         isInteracting = true;
@@ -92,17 +87,15 @@ public class ChangeToNextSceneTwo : MonoBehaviour
     {
         if (interactionPrompt != null)
         {
-            interactionPrompt.gameObject.SetActive(true); // Aktifkan game object text
+            interactionPrompt.gameObject.SetActive(true); 
             interactionPrompt.text = message;
         }
     }
-
-    // Fungsi untuk menyembunyikan prompt interaksi
     void HideInteractionPrompt()
     {
         if (interactionPrompt != null)
         {
-            interactionPrompt.gameObject.SetActive(false); // Nonaktifkan game object text
+            interactionPrompt.gameObject.SetActive(false);
         }
     }
 }
